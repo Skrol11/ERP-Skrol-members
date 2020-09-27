@@ -2,12 +2,13 @@ from model.sales import sales
 from view import terminal as view
 
 def list_transactions():
-    view.print_error_message("Not implemented yet.")
-
-
+    # view.print_error_message("Not implemented yet.")
+    sales.read()
+    view.print_table(sales.SALES_DATABASE, sales.HEADERS)
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
-
+    # view.print_error_message("Not implemented yet.")
+    inputs = view.get_inputs(["Give Customer: ", "Give Product: ", "Give Price: ", "Give Date: "])
+    sales.create(inputs[0], inputs[1], inputs[2], inputs[3])
 
 def update_transaction():
     view.print_error_message("Not implemented yet.")

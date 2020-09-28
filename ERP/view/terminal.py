@@ -1,17 +1,20 @@
-def print_menu(title, list_options):
-    """Prints options in standard menu format like this:
+import sys
+import os
 
-    Main menu:
-    (1) Store manager
-    (2) Human resources manager
-    (3) Inventory manager
-    (0) Exit program
 
-    Args:
-        title (str): the title of the menu (first row)
-        list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
-    """
-    pass
+def print_menu(menu, options):
+    print(menu)
+    for element in range(1, len(options)):
+        print(f'({element}) {options[element]}')
+    print(f'(0) {options[0]}')
+    
+
+# """
+#     Args:
+#         title (str): the title of the menu (first row)
+#         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
+# """
+    
 
 
 def print_message(message):
@@ -49,12 +52,10 @@ def print_table(table):
 
 
 def get_input(label):
-    """Gets single string input from the user.
+   option = input(f'{label}: ')
+   return option
 
-    Args:
-        label: str - the label before the user prompt
-    """
-    pass
+
 
 
 def get_inputs(labels):

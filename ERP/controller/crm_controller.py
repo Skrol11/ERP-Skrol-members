@@ -1,25 +1,66 @@
 from model.crm import crm
 from view import terminal as view
+import csv
+import os
+
 
 
 def list_customers():
-    view.print_error_message("Not implemented yet.")
+    model.crm.read_customers()
+    
+
+# def add_customer():
+#     with open(filepath, newline='') as file:
+#         for row in csv.writer(file):
+#             LIST_CUST.update(row)
+#             for customer in LIST_CUST:
+#                 if customer in LIST_CUST:
+#                     return False
+#                 else:
+#                     LIST_CUST[customer] = 1
+#                     return LIST_CUST
 
 
-def add_customer():
-    view.print_error_message("Not implemented yet.")
+# def update_customer():
+#     with open(filepath, newline='') as file:
+#         for row in csv.writer(file):
+#             LIST_CUST.update(row)
+#             for customer in LIST_CUST:
+#                 if customer in LIST_CUST:
+#                     LIST_CUST[new_customer] = LIST_CUST.pop[customer]
+#                     del LIST_CUST[customer]
+#                     return LIST_CUST
+#                 else:
+#                     return False
+    
+
+# def delete_customer():
+#     with open(filepath, newline='') as file:
+#         for row in csv.writer(file):
+#             LIST_CUST.update(row)
+#             for customer in LIST_CUST:
+#                 if customer in LIST_CUST:
+#                     LIST_CUST.pop(customer)
+#                     return LIST_CUST
+#                 else:
+#                     return False
 
 
-def update_customer():
-    view.print_error_message("Not implemented yet.")
+# def get_subscribed_emails():
+    
+#     view.print_error_message("Not implemented yet.")
 
 
-def delete_customer():
-    view.print_error_message("Not implemented yet.")
-
-
-def get_subscribed_emails():
-    view.print_error_message("Not implemented yet.")
+def display_menu():
+    os.system("cls || clear")
+    print('Customer Relationship Management')
+    options = ["Back to main menu",
+               "List customers",
+               "Add new customer",
+               "Update customer",
+               "Remove customer",
+               "Subscribed customer emails"]
+    view.print_menu("Customer Relationship Management", options)
 
 
 def run_operation(option):
@@ -39,14 +80,7 @@ def run_operation(option):
         raise KeyError("There is no such option.")
 
 
-def display_menu():
-    options = ["Back to main menu",
-               "List customers",
-               "Add new customer",
-               "Update customer",
-               "Remove customer",
-               "Subscribed customer emails"]
-    view.print_menu("Customer Relationship Management", options)
+
 
 
 def menu():

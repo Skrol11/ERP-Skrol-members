@@ -1,18 +1,7 @@
 from view import terminal as view
 from controller import crm_controller, sales_controller, hr_controller
-
-
-def load_module(option):
-    if option == 1:
-        crm_controller.menu()
-    elif option == 2:
-        sales_controller.menu()
-    elif option == 3:
-        hr_controller.menu()
-    elif option == 0:
-        return 0
-    else:
-        raise KeyError()
+import sys
+import os
 
 
 def display_menu():
@@ -20,7 +9,7 @@ def display_menu():
                "Customer Relationship Management (CRM)",
                "Sales",
                "Human Resources"]
-    view.print_menu("Main menu", options)
+    view.print_menu('Main menu', options)
 
 
 def menu():
@@ -35,3 +24,16 @@ def menu():
         except ValueError:
             view.print_error_message("Please enter a number!")
     view.print_message("Good-bye!")
+
+
+def load_module(option):
+    if option == 1:
+        crm_controller.menu()
+    elif option == 2:
+        sales_controller.menu()
+    elif option == 3:
+        hr_controller.menu()
+    elif option == 0:
+        return 0
+    else:
+        raise KeyError()

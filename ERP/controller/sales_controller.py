@@ -11,15 +11,22 @@ def add_transaction():
     sales.create(inputs[0], inputs[1], inputs[2], inputs[3])
 
 def update_transaction():
-    view.print_error_message("Not implemented yet.")
-
+    transaction_id = view.get_input("Provide a valid transactions id to update profile")
+    index = view.get_input("Specify which value you are attempting to change:\n1 for Customer, 2 for Product, 3 for Price, 4 for Date")
+    value = view.get_input("Provide a new value for the selected category")
+    sales.update(transaction_id, index, value) 
+    # view.print_error_message("Not implemented yet.")
 
 def delete_transaction():
-    view.print_error_message("Not implemented yet.")
+    transaction_id = view.get_input("Provide a valid transactions id to update profile")
+    sales.delete(transaction_id)
+    # view.print_error_message("Not implemented yet.")
 
 
 def get_biggest_revenue_transaction():
-    view.print_error_message("Not implemented yet.")
+    biggest_transaction_revenue = sales.get_biggest_revenue_sale()
+    view.print_general_results(biggest_transaction_revenue, "The biggest revenue transaction is: ")
+    # view.print_error_message("Not implemented yet.")
 
 
 def get_biggest_revenue_product():

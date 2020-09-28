@@ -47,7 +47,18 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
-    pass
+    if type(result) == int:
+        print(f"{label}: {result}")
+    elif type(result) == float:
+        result_formatted = '{:.2f}'.format(result)
+        print(f"{label}: {result_formatted}")
+    elif type(result) == list or type(result) == tuple:
+        print(f"{label}:")
+        print('; '.join(f'{e}' for e in result))
+    elif type(result) == dict:
+        print(f"{label}:")
+        print('; '.join(f'{k}: {v}' for k,v in result.items()))
+    print('')
 
 def print_table(table, HEADERS):
     """Prints tabular data like above.

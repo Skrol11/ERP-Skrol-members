@@ -51,8 +51,31 @@ def convert_date(date_as_str):
 
 def get_biggest_revenue_sale():
     read()
-    biggest_revenue_sale = max(SALES_DATABASE, key=lambda sale: sale[2])
-    return biggest_revenue_sale[1]
+    maximum = 0
+    i_max = ""
+    for i in SALES_DATABASE:
+        if maximum < float(i[3]):
+            maximum = float(i[3])
+            i_max = i
+    return i_max
+        
+        
+def get_biggest_revenue_product():
+    read()
+    słownik = {}
+    maximum = 0
+    for i in SALES_DATABASE:
+        if i[2] in słownik:
+            słownik[i[2]] += float(i[3])
+        else:
+            słownik[i[2]] = float(i[3])
+    print(słownik)
+    for j in słownik:
+        if maximum < słownik[j]:
+            maximum = float(słownik[j])
+    print(maximum)
+
+
 
 #     - (5) Get the transaction that made the biggest revenue.
 
@@ -62,7 +85,6 @@ def get_biggest_revenue_sale():
 #     for item in SALES_DATABASE:
 #         prices.append(float)
     
-
 #     - (6) Get the product that made the biggest revenue altogether.
 
 

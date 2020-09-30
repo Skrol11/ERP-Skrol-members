@@ -44,28 +44,27 @@ def print_general_results(result, label):
 # \-----------------------------------/
 
 
-def print_table(table, HEADERS):
-    
-    """Prints tabular data like above.
+def print_table(table, HEADERS):
+    """Prints tabular data like above.
 
-    Args:
-        table: list of lists - the table to print out
-    """
-    cell_sizes = [16, 16, 32, 16, 16]
-    print()
-    print('-'*(sum(cell_sizes) + (3*len(HEADERS)+1)))
-    print('| ',end='')
-    for index, element in enumerate(HEADERS): 
-        print(element + ' '*(cell_sizes[index]-len(element)), end =' | ')
-    print('')
-    print('-'*(sum(cell_sizes) + (3*len(HEADERS)+1)))
-    for row in table: 
-        print('| ',end='')
-        for index, element in enumerate(row): 
-            print(element + ' '*(cell_sizes[index]-len(element)), end =' | ')
-        print('')
-        print('-'*(sum(cell_sizes) + (3*len(row)+1)))
-    print()
+    Args:
+        table: list of lists - the table to print out
+    """
+    cell_sizes = [16, 16, 32, 16, 16]
+    print()
+    print('-'*(sum(cell_sizes) + (3*len(HEADERS)+1)))
+    print('| ',end='')
+    for index, element in enumerate(HEADERS): 
+        print(element + ' '*(cell_sizes[index]-len(element)), end =' | ')
+    print('')
+    print('-'*(sum(cell_sizes) + (3*len(HEADERS)+1)))
+    for row in table: 
+        print('| ',end='')
+        for index, element in enumerate(row): 
+            print(element + ' '*(cell_sizes[index]-len(element)), end =' | ')
+        print('')
+        print('-'*(sum(cell_sizes) + (3*len(row)+1)))
+    print()
 
 
 def get_input(label):

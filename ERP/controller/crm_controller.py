@@ -18,7 +18,6 @@ def add_customer():
     view.print_table(crm.LIST_CUST, crm.HEADERS)
     
 
-
 def update_customer():
     crm.read()
     view.print_table(crm.LIST_CUST, crm.HEADERS)
@@ -43,7 +42,6 @@ def delete_customer():
         return
     else:
         print("Incorrect number")
-
 
 
 def display_menu():
@@ -75,12 +73,10 @@ def run_operation(option):
         raise KeyError("There is no such option.")
 
 
-
-
-
 def menu():
     operation = None
     while operation != '0':
+        
         display_menu()
         try:
             operation = view.get_input("Select an operation")

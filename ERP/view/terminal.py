@@ -88,4 +88,11 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    pass
+    print(f"Error {message}")
+
+
+def change_of_data():
+    number = int(input('Please write a number of a customer: '))
+    return number
+
+

@@ -4,51 +4,46 @@ import csv
 import os
 
 
-
 def list_customers():
-    model.crm.read_customers()
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
+
+
+def add_customer():
+    new_cust = view.get_input(crm.HEADERS[1])
+    new_cust1 = view.get_input(crm.HEADERS[2])
+    new_cust2 = view.get_input(crm.HEADERS[3])
+    crm.write(new_cust, new_cust1, new_cust2)
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
     
 
-# def add_customer():
-#     with open(filepath, newline='') as file:
-#         for row in csv.writer(file):
-#             LIST_CUST.update(row)
-#             for customer in LIST_CUST:
-#                 if customer in LIST_CUST:
-#                     return False
-#                 else:
-#                     LIST_CUST[customer] = 1
-#                     return LIST_CUST
 
+def update_customer():
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
+    number = view.change_of_data()
+    if number - 1 <= len(crm.LIST_CUST):
+        element = crm.LIST_CUST[number-1]
+        user_choise = int(view.get_input("For update\n1. Name\n2.Email\n3.Subscribtion"))
+        user_input = view.get_input("Please write new value: ")
+        if user_choise == 1:
+            crm.update(element[0], user_input, element[2], element[3])
 
-# def update_customer():
-#     with open(filepath, newline='') as file:
-#         for row in csv.writer(file):
-#             LIST_CUST.update(row)
-#             for customer in LIST_CUST:
-#                 if customer in LIST_CUST:
-#                     LIST_CUST[new_customer] = LIST_CUST.pop[customer]
-#                     del LIST_CUST[customer]
-#                     return LIST_CUST
-#                 else:
-#                     return False
-    
+        
+def delete_customer():
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
+    number = view.change_of_data()
+    if number - 1 <= len(crm.LIST_CUST):
+        element = crm.LIST_CUST[number-1]
+        crm.delete(element)
+        crm.read()
+        view.print_table(crm.LIST_CUST, crm.HEADERS)
+        return
+    else:
+        print("Incorrect number")
 
-# def delete_customer():
-#     with open(filepath, newline='') as file:
-#         for row in csv.writer(file):
-#             LIST_CUST.update(row)
-#             for customer in LIST_CUST:
-#                 if customer in LIST_CUST:
-#                     LIST_CUST.pop(customer)
-#                     return LIST_CUST
-#                 else:
-#                     return False
-
-
-# def get_subscribed_emails():
-    
-#     view.print_error_message("Not implemented yet.")
 
 
 def display_menu():

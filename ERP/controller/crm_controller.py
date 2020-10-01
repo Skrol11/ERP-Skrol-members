@@ -24,11 +24,16 @@ def update_customer():
     number = view.change_of_data()
     if number - 1 <= len(crm.LIST_CUST):
         element = crm.LIST_CUST[number-1]
-        user_choise = int(view.get_input("For update\n1. Name\n2.Email\n3.Subscribtion"))
+        user_choise = int(view.get_input("For update\n1. Name\n2.Email\n3.Subscribtion\n"))
         user_input = view.get_input("Please write new value: ")
         if user_choise == 1:
             crm.update(element[0], user_input, element[2], element[3])
-
+        elif user_choise == 2:
+            crm.update(element[0], element[1],  user_input, element[3])
+        elif user_choise == 3:
+            crm.update(element[0], element[1], element[2], user_input,)
+        else:
+            print("Wrong choise")
         
 def delete_customer():
     crm.read()
@@ -45,8 +50,6 @@ def delete_customer():
 
 
 def display_menu():
-    os.system("cls || clear")
-    print('Customer Relationship Management')
     options = ["Back to main menu",
                "List customers",
                "Add new customer",

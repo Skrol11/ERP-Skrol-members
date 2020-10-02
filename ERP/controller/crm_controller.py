@@ -35,6 +35,7 @@ def update_customer():
         else:
             print("Wrong choise")
         
+
 def delete_customer():
     crm.read()
     view.print_table(crm.LIST_CUST, crm.HEADERS)
@@ -86,3 +87,9 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+
+def get_subscribed_emails():
+    crm.read()
+    crm.get()
+    view.print_table(crm.LIST_SUBSCRIBED, crm.HEADERS)

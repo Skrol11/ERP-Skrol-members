@@ -43,6 +43,9 @@ def print_general_results(result, label):
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
 
+def print_table2(table, HEADERS):
+            print(len(HEADERS)
+
 
 def print_table(table, HEADERS):
     """Prints tabular data like above.
@@ -60,7 +63,7 @@ def print_table(table, HEADERS):
     print('-'*(sum(cell_sizes) + (3*len(HEADERS)+1)))
     for row in table: 
         print('| ',end='')
-        for index, element in enumerate(row): 
+        for index, element in enumerate(row, 1): 
             print(element + ' '*(cell_sizes[index]-len(element)), end =' | ')
         print('')
         print('-'*(sum(cell_sizes) + (3*len(row)+1)))

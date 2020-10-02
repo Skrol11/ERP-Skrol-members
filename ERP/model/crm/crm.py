@@ -18,6 +18,7 @@ ID_INDEX = 0
 NAME_INDEX = 1
 EMAIL_INDEX = 2
 SUBSCRIBED_INDEX = 3
+LIST_SUBSCRIBED = []
 
 
 def read():
@@ -46,5 +47,16 @@ def update(id, name, email, subscribed):
             element[3] = subscribed
             data_manager.write_table_to_file(DATAFILE, LIST_CUST, separator= ';')
             return
+
+
+def get():
+    global LIST_SUBSCRIBED
+    for element in LIST_CUST:
+        if element[3] == '1':
+            LIST_SUBSCRIBED.append(element)
+            
+            
+            
+            
         
     

@@ -1,42 +1,51 @@
 from model.hr import hr
 from view import terminal as view
+import os
 
 
 def list_employees():
-    view.print_error_message("Not implemented yet.")
-
+    employees_list = hr.get_employees_list()
+    view.print_table(employees_list, hr.HEADERS)
 
 def add_employee():
-    view.print_error_message("Not implemented yet.")
+    new_employee = view.get_inputs([
+        "Enter new employee's name",
+        "Enter new employee's birth date",
+        "Specify new employee's department",
+        "Specify new employee's clearance level"
+    ])
+    hr.create_new_employee(new_employee)
 
-
-def update_employee():
-    view.print_error_message("Not implemented yet.")
-
+def update_employee(): 
+    given_id = view.get_input("Provide a valid employee's id to update his/her profile")
+    index = view.get_input("Specify which value you are attempting to change:\n1 for name, 2 for b.day, 3 for dept, 4 for clr lvl")
+    value = view.get_input("Provide a new value for the selected category")
+    hr.update_employee(given_id, index, value) 
 
 def delete_employee():
-    view.print_error_message("Not implemented yet.")
-
+    given_id = view.get_input("Provide a valid employee's id to delete his/her profile")
+    hr.delete_employee(given_id)
 
 def get_oldest_and_youngest():
-    view.print_error_message("Not implemented yet.")
-
+    age_extremum_names = hr.find_names_oldest_youngest()
+    view.print_general_results(age_extremum_names, 'The oldest and youngest employees are')
 
 def get_average_age():
-    view.print_error_message("Not implemented yet.")
-
+    avg_age = hr.average_age()
+    view.print_general_results(avg_age, "Employees' average age equals")
 
 def next_birthdays():
-    view.print_error_message("Not implemented yet.")
-
+    input_date = view.get_input('Select the date to be checked since')    
+    view.print_general_results(hr.coming_bdays(input_date), 'Employees having their birthday within 2 weeks since the date provided are')
 
 def count_employees_with_clearance():
-    view.print_error_message("Not implemented yet.")
-
+    given_clr_lvl = view.get_input('Specify the minimum clearance level')
+    qty = hr.num_of_employees_clr_lvl(given_clr_lvl)
+    view.print_general_results(qty, 'Number of employees above or equal to this criteria is')
 
 def count_employees_per_department():
-    view.print_error_message("Not implemented yet.")
-
+    num_per_dpt = hr.num_of_employees_per_dpt()
+    view.print_general_results(num_per_dpt, 'Departments with their inner employees quantities')
 
 def run_operation(option):
     if option == 1:
@@ -62,7 +71,6 @@ def run_operation(option):
     else:
         raise KeyError("There is no such option.")
 
-
 def display_menu():
     options = ["Back to main menu",
                "List employees",
@@ -75,7 +83,6 @@ def display_menu():
                "Employees with clearance level",
                "Employee numbers by department"]
     view.print_menu("Human resources", options)
-
 
 def menu():
     operation = None

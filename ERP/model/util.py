@@ -1,15 +1,6 @@
 import random
 import string
 
-
-def generate_id(number_of_small_letters=4,
-                number_of_capital_letters=2,
-                number_of_digits=2,
-                number_of_special_chars=2,
-                allowed_special_chars=r"_+-!"):
-    returimport random
-import string
-
 # function that create id and check if it is unique 
 def generate_unique_id(forbidden_id_list,number_of_small_letters=4,
                 number_of_capital_letters=2,
@@ -63,4 +54,4 @@ def check_is_id_accessible(id,id_list):
     if any(position == id for position in id_list):
         return False
     else:
-        return Truen 'T!uq6-b4Yq'
+        return True

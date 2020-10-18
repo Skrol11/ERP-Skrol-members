@@ -49,6 +49,8 @@ def convert_date(date_as_str):
     y,m,d = date_as_str.split("-")
     return [int(y), int(m), int(d)]
 
+
+#     - (5) Get the transaction that made the biggest revenue.
 def get_biggest_revenue_sale():
     read()
     maximum = 0
@@ -59,7 +61,7 @@ def get_biggest_revenue_sale():
             i_max = i
     return i_max
         
-        
+#     - (6) Get the product that made the biggest revenue altogether.        
 def get_biggest_revenue_product():
     read()
     słownik = {}
@@ -76,16 +78,6 @@ def get_biggest_revenue_product():
     print(maximum)
 
 
-
-#     - (5) Get the transaction that made the biggest revenue.
-
-# def biggest_revenue_transaction():
-#     read()
-#     prices = []
-#     for item in SALES_DATABASE:
-#         prices.append(float)
-    
-#     - (6) Get the product that made the biggest revenue altogether.
 
 
 #     - (7) Count number of transactions between two given dates.

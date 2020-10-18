@@ -114,3 +114,7 @@ def print_error_message(message):
         message: str - the error message
     """
     print(f"Error {message}")
+
+def change_of_data():
+    number = int(input('Please write a number of a customer: '))
+    return number

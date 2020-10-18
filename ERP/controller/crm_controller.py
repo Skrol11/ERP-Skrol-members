@@ -1,25 +1,63 @@
 from model.crm import crm
 from view import terminal as view
+import csv
+import os
 
 
 def list_customers():
-    view.print_error_message("Not implemented yet.")
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
 
 
 def add_customer():
-    view.print_error_message("Not implemented yet.")
-
+    new_cust = view.get_input(crm.HEADERS[1])
+    new_cust1 = view.get_input(crm.HEADERS[2])
+    new_cust2 = view.get_input(crm.HEADERS[3])
+    crm.write(new_cust, new_cust1, new_cust2)
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
+    
 
 def update_customer():
-    view.print_error_message("Not implemented yet.")
-
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
+    number = view.change_of_data()
+    if number - 1 <= len(crm.LIST_CUST):
+        element = crm.LIST_CUST[number-1]
+        user_choise = int(view.get_input("For update\n1. Name\n2.Email\n3.Subscribtion\n"))
+        user_input = view.get_input("Please write new value: ")
+        if user_choise == 1:
+            crm.update(element[0], user_input, element[2], element[3])
+        elif user_choise == 2:
+            crm.update(element[0], element[1],  user_input, element[3])
+        elif user_choise == 3:
+            crm.update(element[0], element[1], element[2], user_input,)
+        else:
+            print("Wrong choise")
+        
 
 def delete_customer():
-    view.print_error_message("Not implemented yet.")
+    crm.read()
+    view.print_table(crm.LIST_CUST, crm.HEADERS)
+    number = view.change_of_data()
+    if number - 1 <= len(crm.LIST_CUST):
+        element = crm.LIST_CUST[number-1]
+        crm.delete(element)
+        crm.read()
+        view.print_table(crm.LIST_CUST, crm.HEADERS)
+        return
+    else:
+        print("Incorrect number")
 
 
-def get_subscribed_emails():
-    view.print_error_message("Not implemented yet.")
+def display_menu():
+    options = ["Back to main menu",
+               "List customers",
+               "Add new customer",
+               "Update customer",
+               "Remove customer",
+               "Subscribed customer emails"]
+    view.print_menu("Customer Relationship Management", options)
 
 
 def run_operation(option):
@@ -39,22 +77,19 @@ def run_operation(option):
         raise KeyError("There is no such option.")
 
 
-def display_menu():
-    options = ["Back to main menu",
-               "List customers",
-               "Add new customer",
-               "Update customer",
-               "Remove customer",
-               "Subscribed customer emails"]
-    view.print_menu("Customer Relationship Management", options)
-
-
 def menu():
     operation = None
     while operation != '0':
+        
         display_menu()
         try:
             operation = view.get_input("Select an operation")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+
+def get_subscribed_emails():
+    crm.read()
+    crm.get()
+    view.print_table(crm.LIST_SUBSCRIBED, crm.HEADERS)

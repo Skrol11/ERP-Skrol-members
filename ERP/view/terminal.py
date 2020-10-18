@@ -106,6 +106,8 @@ def get_inputs(labels):
         inputs.append(input(i))
     return inputs
 
+    return input_list
+        
 
 def print_error_message(message):
     """Prints an error message to the terminal.

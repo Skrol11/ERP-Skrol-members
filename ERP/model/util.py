@@ -1,6 +1,27 @@
 import random
 import string
 
+# function that create id and check if it is unique 
+def generate_unique_id(forbidden_id_list,number_of_small_letters=4,
+                number_of_capital_letters=2,
+                number_of_digits=2,
+                number_of_special_chars=2,
+                allowed_specialchars=r"+-!"):
+
+
+    is_accessible = False
+
+    while not is_accessible:
+        id = generate_id(number_of_small_letters,
+                number_of_capital_letters,
+                number_of_digits,
+                number_of_special_chars,
+                allowed_special_chars)
+        if check_is_id_accessible(id,forbidden_id_list):
+            is_accessible = True
+
+    return id 
+
 
 # def generate_id(number_of_small_letters=4,
 #                 number_of_capital_letters=2,
